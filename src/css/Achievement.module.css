@@ -1,0 +1,128 @@
+.overlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.7);
+	backdrop-filter: blur(12px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10000;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	padding: 20px;
+}
+
+.overlay.visible {
+	opacity: 1;
+}
+
+.modal {
+	background: var(--bg-card-solid);
+	border: 1px solid rgba(90, 127, 255, 0.4);
+	border-radius: 28px;
+	padding: 48px 40px;
+	text-align: center;
+	max-width: 420px;
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+	transform: scale(0.8);
+	animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+	box-shadow:
+		0 32px 80px rgba(90, 127, 255, 0.3),
+		0 0 0 1px rgba(90, 127, 255, 0.2);
+}
+
+@keyframes pop {
+	0% {
+		transform: scale(0.5);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.glow {
+	position: absolute;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background: radial-gradient(circle at center, rgba(90, 127, 255, 0.4) 0%, transparent 50%);
+	animation: rotate 8s linear infinite;
+	pointer-events: none;
+}
+
+@keyframes rotate {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.icon {
+	font-size: 96px;
+	margin-bottom: 16px;
+	position: relative;
+	animation: bounce 1s ease infinite;
+	filter: drop-shadow(0 8px 32px rgba(90, 127, 255, 0.6));
+}
+
+@keyframes bounce {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-12px);
+	}
+}
+
+.label {
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--accent-blue);
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-bottom: 8px;
+	position: relative;
+}
+
+.title {
+	font-size: 32px;
+	font-weight: 800;
+	margin: 0 0 8px;
+	background: var(--gradient-cosmic);
+	background-size: 200% auto;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: shimmerText 3s linear infinite;
+	position: relative;
+}
+
+@keyframes shimmerText {
+	to {
+		background-position: 200% center;
+	}
+}
+
+.description {
+	font-size: 15px;
+	color: var(--text-secondary);
+	margin: 0;
+	position: relative;
+}
+
+@media (max-width: 480px) {
+	.modal {
+		padding: 36px 24px;
+	}
+	.icon {
+		font-size: 72px;
+	}
+	.title {
+		font-size: 24px;
+	}
+}

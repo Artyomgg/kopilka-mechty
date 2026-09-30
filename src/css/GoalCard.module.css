@@ -1,0 +1,343 @@
+/* ===== КАРТОЧКА ===== */
+.card {
+	background: var(--bg-glass);
+	backdrop-filter: blur(20px);
+	-webkit-backdrop-filter: blur(20px);
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius-xl);
+	overflow: hidden;
+	display: flex; /* 🔥 вертикальный стек */
+	flex-direction: column;
+	width: 100%;
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	position: relative;
+	animation: fadeInUp 0.5s ease backwards;
+}
+
+.card::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3px;
+	background: var(--gradient-primary);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: 2;
+}
+
+.card:hover::before {
+	opacity: 1;
+}
+
+.card:hover {
+	transform: translateY(-4px);
+	border-color: rgba(90, 127, 255, 0.4);
+	box-shadow:
+		0 20px 48px rgba(0, 0, 0, 0.4),
+		0 0 0 1px rgba(90, 127, 255, 0.2);
+}
+
+.card.complete {
+	border-color: rgba(52, 199, 89, 0.5);
+	box-shadow:
+		0 20px 48px rgba(52, 199, 89, 0.2),
+		0 0 0 1px rgba(52, 199, 89, 0.3);
+}
+
+.card.complete::before {
+	background: var(--gradient-success);
+	opacity: 1;
+}
+
+/* ===== ВЕРХ: ФОТО НА ВСЮ ШИРИНУ ===== */
+.imageSection {
+	position: relative;
+	width: 100%;
+	height: 240px; /* 🔥 фиксированная высота фото */
+	overflow: hidden;
+	background: linear-gradient(135deg, rgba(90, 127, 255, 0.15), rgba(139, 108, 252, 0.15));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.6s ease;
+}
+
+.card:hover .image {
+	transform: scale(1.05);
+}
+
+.imagePlaceholder {
+	font-size: 96px;
+	opacity: 0.6;
+	animation: coinPulse 3s ease-in-out infinite;
+}
+
+.completeBadge {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	background: var(--gradient-success);
+	color: white;
+	padding: 8px 16px;
+	border-radius: 9999px;
+	font-size: 13px;
+	font-weight: 700;
+	box-shadow: 0 4px 16px rgba(52, 199, 89, 0.5);
+	z-index: 2;
+	animation: coinPulse 2s ease-in-out infinite;
+}
+
+/* ===== НИЗ: КОНТЕНТ ===== */
+.content {
+	padding: 24px 28px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+/* Заголовок */
+.titleRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 12px;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: 800;
+	margin: 0;
+	color: var(--text-primary);
+	word-break: break-word;
+	letter-spacing: -0.5px;
+	line-height: 1.2;
+}
+
+.btnDelete {
+	background: transparent;
+	border: none;
+	color: var(--text-muted);
+	cursor: pointer;
+	font-size: 16px;
+	padding: 8px 10px;
+	border-radius: 8px;
+	transition: all 0.2s ease;
+	flex-shrink: 0;
+	opacity: 0.6;
+}
+
+.btnDelete:hover {
+	background: rgba(255, 59, 48, 0.15);
+	color: var(--accent-red);
+	opacity: 1;
+	transform: scale(1.1);
+}
+
+/* Streak */
+.streakWrapper {
+	margin-top: -8px;
+}
+
+/* ===== ПРОГРЕСС + СУММЫ (горизонтально) ===== */
+.progressSection {
+	display: grid;
+	grid-template-columns: auto 1fr; /* кольцо + суммы */
+	gap: 32px;
+	align-items: center;
+	padding: 16px 0;
+}
+
+.amounts {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.amountRow {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 6px 0;
+	border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+}
+
+.amountRow:last-child {
+	border-bottom: none;
+}
+
+.amountLabel {
+	font-size: 12px;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	font-weight: 600;
+}
+
+.amountValue {
+	font-size: 16px;
+	font-weight: 800;
+	color: var(--text-primary);
+	letter-spacing: -0.3px;
+}
+
+.amountComplete {
+	color: var(--accent-green);
+}
+
+.amountValueAccent {
+	font-size: 16px;
+	font-weight: 800;
+	color: var(--accent-blue);
+}
+
+/* ===== ДЕДЛАЙН ===== */
+.deadline {
+	font-size: 13px;
+	color: var(--text-muted);
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+/* ===== СТАТИСТИКА ===== */
+.stats {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+/* ===== ДЕЙСТВИЯ ===== */
+.actions {
+	display: flex;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.btnDeposit {
+	flex: 1;
+	min-width: 160px;
+	padding: 12px 20px;
+	background: var(--gradient-primary);
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	box-shadow: 0 4px 16px rgba(90, 127, 255, 0.3);
+}
+
+.btnDeposit:hover:not(:disabled) {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 24px rgba(90, 127, 255, 0.45);
+}
+
+.btnDeposit:disabled {
+	background: var(--gradient-success);
+	opacity: 0.8;
+	cursor: not-allowed;
+}
+
+.btnSecondary {
+	padding: 12px 18px;
+	background: rgba(255, 255, 255, 0.05);
+	color: var(--text-secondary);
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	white-space: nowrap;
+}
+
+.btnSecondary:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: var(--text-primary);
+	border-color: var(--border-light);
+}
+
+/* ===== ИСТОРИЯ ===== */
+.history {
+	max-height: 220px;
+	overflow-y: auto;
+	background: rgba(0, 0, 0, 0.2);
+	border-radius: 12px;
+	padding: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	border: 1px solid var(--border-color);
+}
+
+.historyItem {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 12px;
+	background: rgba(255, 255, 255, 0.03);
+	border-radius: 8px;
+	font-size: 13px;
+}
+
+.historyItem strong {
+	color: var(--accent-green);
+	font-weight: 700;
+}
+
+.historyItem small {
+	color: var(--text-muted);
+	font-size: 11px;
+}
+
+.note {
+	color: var(--text-muted);
+	font-style: italic;
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+	.imageSection {
+		height: 180px;
+	}
+
+	.content {
+		padding: 20px;
+	}
+
+	.title {
+		font-size: 20px;
+	}
+
+	.progressSection {
+		grid-template-columns: 1fr;
+		gap: 16px;
+		justify-items: center;
+	}
+
+	.amounts {
+		width: 100%;
+	}
+}
+
+@media (max-width: 480px) {
+	.actions {
+		flex-direction: column;
+	}
+
+	.btnDeposit,
+	.btnSecondary {
+		width: 100%;
+		justify-content: center;
+	}
+}

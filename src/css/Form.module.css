@@ -1,0 +1,269 @@
+/* МОДАЛКА */
+.modalOverlay {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.75);
+	backdrop-filter: blur(8px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1000;
+	padding: 20px;
+	animation: fadeIn 0.2s ease;
+}
+
+.modal {
+	background: var(--bg-card);
+	border: 1px solid var(--border-color);
+	border-radius: var(--radius-lg);
+	width: 100%;
+	max-width: 480px;
+	max-height: 90vh;
+	overflow-y: auto;
+	animation: slideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.modalHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 20px 24px;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.modalHeader h2 {
+	font-size: 18px;
+	font-weight: 700;
+	margin: 0;
+}
+
+.modalClose {
+	width: 32px;
+	height: 32px;
+	background: rgba(255, 255, 255, 0.05);
+	border: none;
+	border-radius: 8px;
+	color: var(--text-secondary);
+	font-size: 20px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.2s ease;
+}
+
+.modalClose:hover {
+	background: rgba(255, 255, 255, 0.1);
+	color: var(--text-primary);
+}
+
+/* ФОРМА */
+.form {
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.formGroup {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.formGroup label {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--text-secondary);
+}
+
+.formGroup input {
+	padding: 12px 14px;
+	background: var(--bg-input);
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	color: var(--text-primary);
+	font-size: 14px;
+	transition: all 0.2s ease;
+}
+
+.formGroup input:focus {
+	outline: none;
+	border-color: var(--accent-blue);
+	box-shadow: 0 0 0 3px rgba(90, 127, 255, 0.1);
+}
+
+.formGroup input::placeholder {
+	color: var(--text-muted);
+}
+
+.formActions {
+	display: flex;
+	gap: 10px;
+	margin-top: 8px;
+}
+
+.btnPrimary,
+.btnSecondary {
+	flex: 1;
+	padding: 12px;
+	border: none;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.btnPrimary {
+	background: var(--gradient-primary);
+	color: white;
+	box-shadow: 0 4px 16px rgba(90, 127, 255, 0.25);
+}
+
+.btnPrimary:hover {
+	transform: translateY(-1px);
+	box-shadow: 0 6px 20px rgba(90, 127, 255, 0.35);
+}
+
+.btnSecondary {
+	background: rgba(255, 255, 255, 0.05);
+	color: var(--text-secondary);
+	border: 1px solid var(--border-color);
+}
+
+.btnSecondary:hover {
+	background: rgba(255, 255, 255, 0.08);
+	color: var(--text-primary);
+}
+
+/* ФОРМА ВЗНОСА */
+.depositForm {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 14px;
+	background: rgba(90, 127, 255, 0.05);
+	border: 1px solid rgba(90, 127, 255, 0.2);
+	border-radius: 12px;
+}
+
+.quickAmounts {
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+.quickBtn {
+	padding: 6px 12px;
+	background: rgba(90, 127, 255, 0.15);
+	border: 1px solid rgba(90, 127, 255, 0.3);
+	border-radius: 9999px;
+	color: var(--accent-blue);
+	font-size: 12px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.quickBtn:hover {
+	background: rgba(90, 127, 255, 0.25);
+	transform: scale(1.05);
+}
+
+.depositForm input {
+	padding: 10px 12px;
+	background: var(--bg-input);
+	border: 1px solid var(--border-color);
+	border-radius: 10px;
+	color: var(--text-primary);
+	font-size: 14px;
+}
+
+.depositForm input:focus {
+	outline: none;
+	border-color: var(--accent-blue);
+}
+
+.depositActions {
+	display: flex;
+	gap: 8px;
+}
+
+.depositActions .btnPrimary,
+.depositActions .btnSecondary {
+	padding: 10px;
+	font-size: 13px;
+}
+
+/* АНИМАЦИИ */
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes slideUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px) scale(0.98);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+/* ===== СНЯТИЕ ===== */
+.withdrawHeader {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 14px;
+	background: rgba(255, 149, 0, 0.08);
+	border-left: 3px solid var(--accent-orange);
+	border-radius: 8px;
+	font-size: 14px;
+	color: var(--text-secondary);
+}
+
+.withdrawIcon {
+	font-size: 20px;
+}
+
+.withdrawHeader strong {
+	color: var(--accent-orange);
+}
+
+.btnWithdraw {
+	flex: 1;
+	padding: 10px;
+	background: linear-gradient(135deg, #ff9500, #f59e0b);
+	color: white;
+	border: none;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 700;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	box-shadow: 0 4px 16px rgba(255, 149, 0, 0.3);
+}
+
+.btnWithdraw:hover:not(:disabled) {
+	transform: translateY(-1px);
+	box-shadow: 0 6px 20px rgba(255, 149, 0, 0.45);
+}
+
+.btnWithdraw:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+/* Quick btn для отключённого состояния */
+.quickBtn:disabled {
+	opacity: 0.3;
+	cursor: not-allowed;
+}

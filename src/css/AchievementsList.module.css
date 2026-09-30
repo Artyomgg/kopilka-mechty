@@ -1,0 +1,43 @@
+.wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	padding: 12px;
+	background: rgba(0, 0, 0, 0.15);
+	border-radius: 12px;
+	border: 1px solid var(--border-color);
+}
+
+.badge {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	cursor: help;
+	position: relative;
+}
+
+.badge.unlocked {
+	background: linear-gradient(135deg, rgba(90, 127, 255, 0.2), rgba(139, 108, 252, 0.2));
+	border: 1px solid rgba(90, 127, 255, 0.4);
+	box-shadow: 0 0 12px rgba(90, 127, 255, 0.3);
+}
+
+.badge.unlocked:hover {
+	transform: scale(1.2) rotate(10deg);
+	box-shadow: 0 0 20px rgba(90, 127, 255, 0.6);
+}
+
+.badge.locked {
+	background: rgba(255, 255, 255, 0.03);
+	border: 1px solid rgba(255, 255, 255, 0.06);
+	opacity: 0.4;
+}
+
+.icon {
+	font-size: 20px;
+	line-height: 1;
+}
